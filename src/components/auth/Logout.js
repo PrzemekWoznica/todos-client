@@ -10,12 +10,6 @@ function Logout({isAuthenticated, setIsAuthenticated}) {
 		setIsAuthenticated(false);
 		history("/")
     }, [history, setIsAuthenticated])
-
-	return (
-		<div className="text-center">
-			<h1>Successfully sign out</h1>
-		</div>
-	)
 }
 
 export default Logout;
