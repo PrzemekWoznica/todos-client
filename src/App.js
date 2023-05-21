@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import Login from "./components/auth/Login.js";
+import Signup from "./components/auth/Signup.js";
+import Main from "./components/main/Main.js";
+import Navbar from "./components/navbar/Navbar.js";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Logout from "./components/auth/Logout.js";
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Navbar isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated}/>
+        <Routes>
+          <Route exact path="/" element={<Main isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated}/>}/>
+          <Route exact path="/signup" element={<Signup isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated}/>}/>
+          <Route exact path="/login" element={<Login isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated}/>}/>
+          <Route exact path="/logout" element={<Logout isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated}/>}/>
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
