@@ -1,0 +1,36 @@
+.kontener{
+    height: 60vh;
+    max-height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card{
+    width: 60%; 
+    margin: 1em auto;
+}
+
+.card p{
+    color: black;
+}
+
+.group{
+    display: flex; 
+    flex-direction: column;
+}
+
+.control{
+    border-color: green;
+}
+
+@media (max-width: 600px){
+    .card{
+        width: 100%;
+    }
+
+    .card p{
+        font-size: 1em;
+    }
+}

@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { Container, Card, Form, Button } from "react-bootstrap"
 import { useNavigate } from "react-router-dom";
+import "./Auth.css"
 
 export default function Signup({isAuthenticated, setIsAuthenticated}) {
     const [username, setUsername] = useState("");
@@ -12,7 +13,7 @@ export default function Signup({isAuthenticated, setIsAuthenticated}) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try{
-            const response = await axios.post("http://localhost:8080/api/auth/signup", {username, password});
+            const response = await axios.post("/api/auth/signup", {username, password});
             sessionStorage.setItem("username", response.data.username);
             sessionStorage.setItem("token", response.data.token);
             setIsAuthenticated(true);
@@ -29,7 +30,7 @@ export default function Signup({isAuthenticated, setIsAuthenticated}) {
     const showError = () => {
         if(error !== ""){
             return (
-                <Card style={{width: "60%", margin: "1em auto"}}>
+                <Card className="card">
                     <Card.Body>
                         <p>Wrong credentials</p>
                         <p>{error}</p>
@@ -42,28 +43,20 @@ export default function Signup({isAuthenticated, setIsAuthenticated}) {
     }
 
         return (
-            <Container style={{
-                height: "70vh",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "center"
-            }}>
+            <Container className="kontener">
                 <h1>Sign up</h1>
-                <Card style={{width: "60%", margin: "1em auto"}}>
+                <Card className="card">
                     <Card.Body>
                         <Form onSubmit={handleSubmit}>
-                            <Form.Group style={{display: "flex", flexDirection: "column"}}>
+                            <Form.Group className="group">
                                 <Form.Control
-                                    className="my-3"
-                                    style={{borderColor: "green"}}
+                                    className="control my-3"
                                     value={username}
                                     onChange={(e) => setUsername(e.target.value)}
                                     placeholder="Write username"
                                 />
                                 <Form.Control
-                                    className="my-3"
-                                    style={{borderColor: "green"}}
+                                    className="control my-3"
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                     placeholder="Write password"

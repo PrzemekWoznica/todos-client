@@ -5,6 +5,7 @@ import Main from "./components/main/Main.js";
 import Navbar from "./components/navbar/Navbar.js";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Logout from "./components/auth/Logout.js";
+import "./App.css"
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);

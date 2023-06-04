@@ -1,0 +1,9 @@
+.group{
+    width: 100%;
+}
+
+.description{
+    color: black;
+    max-width: 90%;
+    word-wrap: break-word; 
+}

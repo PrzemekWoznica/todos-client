@@ -1,0 +1,10 @@
+.welcomecard{
+    width: 60%; 
+    margin: 1em auto;
+}
+
+@media (max-width: 600px){
+    .welcomecard{
+        width: 100%;
+    }
+}

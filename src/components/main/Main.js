@@ -2,19 +2,23 @@ import Welcome from "../welcome/Welcome";
 import AddTodo from "../adding/AddTodo"
 import TodoList from "../todolist/TodosList";
 import { Container } from 'react-bootstrap'
+import "./Main.css"
+import { useState } from "react";
 
 function Main({isAuthenticated, setIsAuthenticated}) {
-  if(isAuthenticated == false){
+  const [added, setAdded] = useState(false);
+
+  if(isAuthenticated === false){
     return (
-      <Container className="my-3" style={{width: "80%", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
+      <Container className="cont my-3">
         <Welcome/>
       </Container>
     );
   } else {
     return (
-      <Container className="my-3" style={{width: "80%", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
-        <AddTodo/>
-        <TodoList />
+      <Container className="cont my-3">
+        <AddTodo setAdded={setAdded}/>
+        <TodoList added={added} setAdded={setAdded}/>
       </Container>
     );
   }

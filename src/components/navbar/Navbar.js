@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import "./Navbar.css";
 
 export default function Menu({isAuthenticated, setIsAuthenticated}) {
     const [username, setUsername] = useState("");
@@ -10,23 +11,13 @@ export default function Menu({isAuthenticated, setIsAuthenticated}) {
     }, [isAuthenticated])
 
     const authButtons = () => {
-        if(isAuthenticated == false){
+        if(isAuthenticated === false){
             return (
                 <Nav>
-                    <Link to="/signup" style={{
-                        color: "white",
-                        fontSize: "1.5em",
-                        margin:"0 1em",
-                        textDecoration: "none"
-                    }}>
+                    <Link className="link" to="/signup">
                         Sign up
                     </Link>
-                    <Link to="/login" style={{
-                        color: "white",
-                        fontSize: "1.5em",
-                        margin:"0 1em",
-                        textDecoration: "none"
-                    }}>
+                    <Link className="link" to="/login">
                         Log in
                     </Link>
                 </Nav>   
@@ -34,15 +25,8 @@ export default function Menu({isAuthenticated, setIsAuthenticated}) {
         } else {
             return (
                 <Nav className='flex justify-content-center align-items-center'>
-                    <p style={{margin: "0", fontSize: "1.5em", color: "white"}}>
-                        You are logged as: {username}
-                    </p>  
-                    <Link to="/logout" style={{
-                        color: "white",
-                        fontSize: "1.5em",
-                        margin:"0 1em",
-                        textDecoration: "none"
-                    }}>
+                    <p className='logged'>You are logged as: {username}</p>  
+                    <Link className="link" to="/logout">
                         Log out
                     </Link>
                 </Nav>  
@@ -52,15 +36,9 @@ export default function Menu({isAuthenticated, setIsAuthenticated}) {
     }
 
     return (
-        <Navbar className="menu flex justify-content-between" bg="dark">
+        <Navbar className="flex justify-content-between align-items-center" bg="dark">
             <Link to="/" style={{textDecoration: "none"}}>
-                <Navbar.Brand style={{
-                    color: "white", 
-                    fontSize: "2.5em", 
-                    margin:"0 1em"
-                }}>
-                    Todos
-                </Navbar.Brand>
+                <h1 className="brand">Todos</h1>
             </Link>
             {authButtons()}
         </Navbar>
